@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import giphy from 'giphy-api';
 
 import SearchBar from './search_bar';
 import Gif from './gif';
@@ -14,10 +15,18 @@ class App extends Component {
       gifs: [],
       selectedGifId: ""
     }
+    this.search("homer thinking");
   }
 
   search = (query) => {
-    // TODO: API Call
+    giphy('h2T2AwoSUFidhnUgan1RQctr6rjIMr6r').search({
+      q: query,
+      rating: 'g'
+    }, (error,result) => {
+      this.setState({
+        gifs: result.date
+      });
+    });
   }
 
 
